@@ -35,6 +35,28 @@ fun print2DArr(arr:Array<Array<Int>>) {
     }
 }
 
+fun getUniqueDigits(n:Int): MutableSet<Int> {
+    val ret:MutableSet<Int> = mutableSetOf()
+
+    for (digit in n.toString()) {
+        ret.add(digit.digitToInt())
+    }
+
+    return ret
+}
+
+fun getUniqueDigits2DArr(arr:Array<Array<Int>>): MutableSet<Int>{
+    val ret:MutableSet<Int> = mutableSetOf()
+
+    for (i in arr) {
+        for (j in i) {
+            ret.addAll(getUniqueDigits(j))
+        }
+    }
+
+    return ret
+}
+
 fun main() {
     val rows = getInt("Введите количество строк массива: ", 0)
     val cols = getInt("Введите количество столбцов массива: ", 0)
@@ -46,4 +68,6 @@ fun main() {
     }
 
     print2DArr(arr)
+
+    println("В массиве использовано ${getUniqueDigits2DArr(arr).size} различных цифр")
 }
