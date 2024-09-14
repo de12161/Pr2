@@ -14,7 +14,9 @@ fun getStr(msg:String, alphabet: Array<Char>): String {
         ret = readln()
 
         if (!verifyStr(ret, alphabet)) {
-            println("Строка должна содержать только строчные буквы русского алфавита")
+            println("Строка должна содержать только эти символы: ")
+            alphabet.forEach { print(it) }
+            println()
             continue
         }
 
