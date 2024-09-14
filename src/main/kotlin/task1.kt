@@ -29,8 +29,10 @@ fun getInt(msg:String, min:Int = Int.MIN_VALUE, max:Int = Int.MAX_VALUE): Int {
 fun main() {
     val rows = getInt("Введите количество строк массива: ", 0)
     val cols = getInt("Введите количество столбцов массива: ", 0)
-    val arr:Array<Array<Int>> = Array(rows) { i ->
-        Array(cols) { j -> getInt("[${i + 1}, ${j + 1}] = ") }
+    val arr:Array<Array<Int>> = Array(rows) {
+        i -> Array(cols) {
+            j -> getInt("[${i + 1}, ${j + 1}] = ")
+        }
     }
 
 }
