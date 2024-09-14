@@ -27,6 +27,7 @@ fun main() {
         groups.add(getGroup(getUniqueChars(str), input))
     }
 
+    println("Группы слов, состоящих из одинаковых букв: ")
     for (group in groups) {
         for (word in group) {
             print(" $word")
