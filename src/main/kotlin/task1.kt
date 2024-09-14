@@ -11,12 +11,12 @@ fun getInt(msg:String, min:Int = Int.MIN_VALUE, max:Int = Int.MAX_VALUE): Int {
         }
 
         if (ret < min) {
-            println("Число должно быть больше $min")
+            println("Число должно быть больше или равно $min")
             continue
         }
 
         if (ret > max) {
-            println("Число должно быть меньше $max")
+            println("Число должно быть меньше или равно $max")
             continue
         }
 
