@@ -26,13 +26,24 @@ fun getInt(msg:String, min:Int = Int.MIN_VALUE, max:Int = Int.MAX_VALUE): Int {
     return ret
 }
 
+fun print2DArr(arr:Array<Array<Int>>) {
+    for (i in arr) {
+        for (j in i) {
+            print("\t$j")
+        }
+        println()
+    }
+}
+
 fun main() {
     val rows = getInt("Введите количество строк массива: ", 0)
     val cols = getInt("Введите количество столбцов массива: ", 0)
+
     val arr:Array<Array<Int>> = Array(rows) {
         i -> Array(cols) {
             j -> getInt("[${i + 1}, ${j + 1}] = ")
         }
     }
 
+    print2DArr(arr)
 }
