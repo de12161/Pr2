@@ -8,7 +8,7 @@ fun getUniqueChars(str:String): Set<Char> {
     return ret
 }
 
-fun getGroup(chars:Set<Char>, arr:List<String>): MutableList<String> {
+fun getGroup(chars:Set<Char>, arr:List<String>): List<String> {
     val ret:MutableList<String> = mutableListOf()
 
     for (str in arr) {
@@ -22,7 +22,7 @@ fun main() {
     println("Введите любое количество слов: ")
     val input = readln().split(" ")
 
-    val groups:MutableSet<MutableList<String>> = mutableSetOf()
+    val groups:MutableSet<List<String>> = mutableSetOf()
     for (str in input) {
         groups.add(getGroup(getUniqueChars(str), input))
     }

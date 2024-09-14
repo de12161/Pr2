@@ -1,41 +1,30 @@
-fun getInt(msg:String, min:Int = Int.MIN_VALUE, max:Int = Int.MAX_VALUE): Int {
-    var ret:Int
+fun inputInt(msg:String, min:Int? = null, max:Int? = null): Int {
+    var ret:Int?
 
     while (true) {
-        try {
-            print(msg)
-            ret = readln().toInt()
-        } catch (e:java.lang.NumberFormatException) {
+        print(msg)
+        ret = readln().toIntOrNull()
+
+        if (ret == null) {
             println("Неверный ввод")
             continue
         }
 
-        if (ret < min) {
+        if (min != null && ret < min) {
             println("Число должно быть больше или равно $min")
             continue
         }
 
-        if (ret > max) {
+        if (max != null && ret > max) {
             println("Число должно быть меньше или равно $max")
             continue
         }
 
-        break
-    }
-
-    return ret
-}
-
-fun print2DArr(arr:Array<Array<Int>>) {
-    for (i in arr) {
-        for (j in i) {
-            print("\t$j")
-        }
-        println()
+        return ret
     }
 }
 
-fun getUniqueDigits(n:Int): MutableSet<Int> {
+fun getUniqueDigits(n:Int): Set<Int> {
     val ret:MutableSet<Int> = mutableSetOf()
 
     for (digit in n.toString()) {
@@ -45,7 +34,7 @@ fun getUniqueDigits(n:Int): MutableSet<Int> {
     return ret
 }
 
-fun getUniqueDigits2DArr(arr:Array<Array<Int>>): MutableSet<Int>{
+fun getUniqueDigits2DArr(arr:Array<Array<Int>>): Set<Int>{
     val ret:MutableSet<Int> = mutableSetOf()
 
     for (i in arr) {
@@ -58,16 +47,19 @@ fun getUniqueDigits2DArr(arr:Array<Array<Int>>): MutableSet<Int>{
 }
 
 fun main() {
-    val rows = getInt("Введите количество строк массива: ", 0)
-    val cols = getInt("Введите количество столбцов массива: ", 0)
+    val rows = inputInt("Введите количество строк массива: ", 0)
+    val cols = inputInt("Введите количество столбцов массива: ", 0)
 
     val arr:Array<Array<Int>> = Array(rows) {
         i -> Array(cols) {
-            j -> getInt("[${i + 1}, ${j + 1}] = ")
+            j -> inputInt("[${i + 1}, ${j + 1}] = ")
         }
     }
 
-    print2DArr(arr)
+    arr.forEach {
+        row -> row.forEach { print("\t$it") }
+        println()
+    }
 
-    println("В массиве использовано ${getUniqueDigits2DArr(arr).size} различных цифр")
+    println("В массиве использовано ${getUniqueDigits2DArr(arr).size} различных цифр(ы)")
 }
